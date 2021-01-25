@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>
+    使用 React 与 Vue 创建同一款 App，差别究竟有多大？ | ［旧版］树寒的博客
+  </title>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta name="theme-color" content="#4184f3">
+  
+  
+  <link href="https://shuxhan-imgbed.oss-cn-hangzhou.aliyuncs.com/img/20210108143023.png" rel="icon" />
+  
+
+  
+<link rel="stylesheet" href="/css/highlight.light.css">
+
+  
+<link rel="stylesheet" href="/css/prism-customize.css">
+
+  
+<link rel="stylesheet" href="/css/nav-icon.css">
+
+  
+<link rel="stylesheet" href="/css/waves.min.css">
+
+  
+<link rel="stylesheet" href="/css/jquery.tocify.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/nav-indicator.css">
+
+  
+<link rel="stylesheet" href="/css/twikoo.css">
+
+  
+<link rel="stylesheet" href="/css/search.css">
+
+  
+  
+
+  
+
+  </meta>
+  </meta>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  
+<script src="/js/comment.js"></script>
+
+  
+<script src="/js/copy.js"></script>
+
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="［旧版］树寒的博客" type="application/atom+xml">
+</head>
+
+	<body>
+		<header>
+			<!-- cover image or sth. -->
+		</header>
+		<div id="main" class="m-scene">
+			
+<div class="nav-wrapper" id="header">
+
+
+
+    <div class="container">
+        <nav>
+            
+            
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    树寒的博客
+                </a>
+            </div>
+
+
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                首页
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                归档
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                关于
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/message">
+                                留言
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/search">
+                                搜索
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+</div>
+
+
+				<div class="container content">
+					<div class="scene_element scene_element--fadein">
+						<div class="row">
+  <div class="main main-article">
+    <article>
+
+      
+        <header class="post-header with-cover" style="background-image:url('https://shuxhan-imgbed.oss-cn-hangzhou.aliyuncs.com/img/20210108143024.jpg')">
+      
+        </header>
+
+      <!-- 标题 -->
+      <h1 class="post-title">
+        使用 React 与 Vue 创建同一款 App，差别究竟有多大？
+      </h1>
+
+      <section class="post-info post-info-bottom">
+
+        <!-- 发布时间 -->
+        <span class="post-date">
+          <span class="post-date-text">
+            发布于: 2021-01-06
+          </span>
+        </span>
+        
+        <!-- 分类 -->
+        
+          <span class="post-category">分类:
+            <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/">前端技术</a>
+          </span>
+        
+
+        <!-- 标签 -->
+        
+
+        <!-- 阅读量统计 -->
+        
+
+      </section>
+
+      <!-- 正文 -->
+      <section class="post-content">
+        <p>关于 <a target="_blank" rel="noopener" href="https://react.docschina.org/">React 框架</a> 和 <a target="_blank" rel="noopener" href="https://cn.vuejs.org/">Vue 框架</a> 的对比，用两者写出同一个程序，对比其代码实现的过程，看看它们的差异究竟有多大？</p>
+<a id="more"></a>
+
+<blockquote>
+<p>转载于：<a target="_blank" rel="noopener" href="https://blog.csdn.net/csdnnews/article/details/81880378">https://blog.csdn.net/csdnnews/article/details/81880378</a><br>原文：<a target="_blank" rel="noopener" href="https://medium.com/javascript-in-plain-english/i-created-the-exact-same-app-in-react-and-vue-here-are-the-differences-e9a1ae8077fd">https://medium.com/javascript-in-plain-english/i-created-the-exact-same-app-in-react-and-vue-here-are-the-differences-e9a1ae8077fd</a><br>作者简介：Sunil Sandhu，一位 Web 全栈工程师 + 空想家。<br>译者：安翔，责编：屠敏</p>
+</blockquote>
+<p>众所周知，Vue 和 React 都是目前非常著名的前端框架。我在工作中经常使用 Vue，因此我对它有很深入的了解。同时，我也对 React 充满了好奇，想要学习一下，一探究竟。</p>
+<p>于是我阅读了 React 文档并观看了一些视频教程，虽然这些资料很不错，但是我真正想了解的是 React 与 Vue 之间的不同之处。所谓“不同之处”，我并非想知道它们是否都具有虚拟 DOMS 或者它们如何渲染页面，而是希望有人能够从代码的角度解释这两者之间的差异。我想找到一篇解释这些差异的文章，以便 Vue 或者 React 的初学者可以更好地理解它们两者之间的差异。</p>
+<p>很遗憾，我并未找到一篇这样的文章。于是我意识到必须自己动手来比较 Vue 与 React 之间的异同。在我自力更生的过程中，我用这篇文章记录下了具体过程。 </p>
+<h2 id="1-目标"><a href="#1-目标" class="headerlink" title="1.目标"></a>1.目标</h2><p>我将会构建一个标准的待办事项应用程序，允许用户添加和删除列表中的项目。这两个应用程序都使用默认的 CLI（command-line interface，命令行界面） 构建，React 使用 create-react-app，Vue 使用 vue-cli。</p>
+<p>两个应用程序的外观如下： </p>
+<p><img src="https://shuxhan-imgbed.oss-cn-hangzhou.aliyuncs.com/img/20210108143025.jpg"></p>
+<p>两个应用程序的 CSS 代码几乎一样，但这些代码的位置存在差异。考虑到这一点，我们来看看这两个应用程序的文件结构： </p>
+<p><img src="https://shuxhan-imgbed.oss-cn-hangzhou.aliyuncs.com/img/20210108143026.jpg"></p>
+<p>你会发现它们的结构几乎完全相同。唯一的区别在于 React App 拥有三个 CSS 文件，而 Vue App 中没有 CSS 文件。这是因为 React 的 create-react-app 组件需要一个附带文件来保存其样式，而 Vue CLI 采用全包方法，其样式在实际组件文件中声明。</p>
+<p>两种不同的策略得到的结果是一样的，相信开发者很快能够掌握这两种不同的策略。开发者可以根据自己的偏好做出选择，你会听到开发社区关于如何构建 CSS 的大量讨论。以上，我们遵循两个 CLI 列出了代码结构。</p>
+<p>在我们进一步讨论之前，先快速看一下典型的 Vue 和 React 组件的外观：</p>
+<p><img src="https://shuxhan-imgbed.oss-cn-hangzhou.aliyuncs.com/img/20210108143027.jpg"></p>
+<p>现在让我们正式开始，深入其中的细节！</p>
+<h2 id="2-如何修改数据"><a href="#2-如何修改数据" class="headerlink" title="2.如何修改数据"></a>2.如何修改数据</h2><p>首先，我们需要明白“修改数据”的意思是什么。它听起来有些学术，但实际上很简单，就是把我们已经存储好的数据进行更改。比如，如果我们想把一个人的名字变量从“Jhon”改为“Mark”，我们就需要执行“修改数据”的操作。在这一点上，React 和 Vue 的处理方式有所区别。Vue 本质上会创建一个数据对象，其中的数据可以自由更改；React 则创建一个状态对象，更改数据需要一些额外的操作。React 之所以需要额外的操作有着自己的理由，稍后我会深入介绍。在此之前，我们先看看 Vue 中的数据对象和 React 中的状态对象： </p>
+<p><strong>vue 数据对象</strong><br><img src="https://shuxhan-imgbed.oss-cn-hangzhou.aliyuncs.com/img/20210108143028.jpg"></p>
+<p><strong>React 状态对象</strong><br><img src="https://shuxhan-imgbed.oss-cn-hangzhou.aliyuncs.com/img/20210108143029.jpg"></p>
+<p>从图中可以看出，我们传入了相同的数据，但它们的标记方法不同。因此，将初始数据传递到组件的方式非常相似。但正如我们提到的那样，在两个框架中更改数据的方式有所不同。</p>
+<p>假设我们有一个名为 name: ‘Sunil’ 的数据元素。</p>
+<p>在 Vue 中，我们通过调用 this.name 来引用它。我们也可以通过调用 this.name =’John’ 来更新它。这样一来，名字就被成功改为了 “Jhon”。</p>
+<p>在 React 中，我们通过调用 this.state.name 来引用同一段数据。现在关键的区别在于，我们不能简单地写成 this.state.name =’John’，因为 React 有限制机制，它会阻止这种简单的修改方式。在 React 中，我们需要这样写：this.setState({name：’John’})。</p>
+<p>虽然这基本上与我们在 Vue 中实现的结果一样，但是 React 的操作更为繁琐，那是因为 Vue 在每次更新数据时默认组合了自己的 setState 版本。 简单来说就是，React 需要 setState，然后更新其内部数据，而对于 Vue 来说，当你更新数据对象的值时它就默认了你的更改意图。 那么为什么 React 没有进行简化，为什么需要 setState 呢？ Revanth Kumar 对此做出了解释：</p>
+<blockquote>
+<p>“这是因为 React 希望在状态发生变化时重新运行某些生命周期 hook，比如 componentWillReceiveProps、shouldComponentUpdate、componentWillUpdate、render、componentDidUpdate。当你调用 setState 函数时，它知道状态已经改变。如果你直接改变状态，React 将需要做更多工作来跟踪更改以及运行生命周期 hook 等等。所以为了简单起见，React 使用 setState。” </p>
+</blockquote>
+<p><img src="https://shuxhan-imgbed.oss-cn-hangzhou.aliyuncs.com/img/20210108143030.jpg"></p>
+<h2 id="3-添加新的待办事项"><a href="#3-添加新的待办事项" class="headerlink" title="3.添加新的待办事项"></a>3.添加新的待办事项</h2><h3 id="React-的实现方法"><a href="#React-的实现方法" class="headerlink" title="React 的实现方法"></a>React 的实现方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">createNewToDoItem = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState( <span class="function">(<span class="params">&#123; list, todo &#125;</span>) =&gt;</span> (&#123;</span><br><span class="line">      list: [</span><br><span class="line">          ...list,</span><br><span class="line">        &#123;</span><br><span class="line">          todo</span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      todo: <span class="string">&#x27;&#x27;</span></span><br><span class="line">    &#125;)</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>在 React 中，我们的输入字段有一个名为 value 的属性。这个 value 通过使用几个函数自动更新，这些函数绑定在一起以创建双向绑定。我们通过在输入字段上附加一个 onChange 事件监听器来创建这种形式的双向绑定。看看代码，一探究竟：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> </span></span><br><span class="line"><span class="tag">       <span class="attr">value</span>=<span class="string">&#123;this.state.todo&#125;</span> </span></span><br><span class="line"><span class="tag">       <span class="attr">onChange</span>=<span class="string">&#123;this.handleInput&#125;/</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>只要输入字段的值发生更改，handleInput 函数就会运行。它通过将状态对象设置为输入字段中的任何内容来更新状态对象内的 todo。handleInput 函数如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">handleInput = <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">    todo: e.target.value</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>现在，只要用户按下页面上的 + 按钮添加新项目，createNewToDoItem 函数就会运行 this.setState 并向其传递一个函数。该函数有两个参数，第一个是来自状态对象的整个列表数组，第二个是由 handleInput 函数更新的todo。然后该函数返回一个新对象，该对象包含之前的整个列表，并在其末尾添加todo。整个列表是通过使用扩展运算符添加的。</p>
+<p>最后，我们将 todo 设置为空字符串，它会自动更新输入字段中的 value。</p>
+<h3 id="Vue-的实现方法"><a href="#Vue-的实现方法" class="headerlink" title="Vue 的实现方法"></a>Vue 的实现方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">createNewToDoItem</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.list.push(</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&#x27;todo&#x27;</span>: <span class="built_in">this</span>.todo</span><br><span class="line">        &#125;</span><br><span class="line">    );</span><br><span class="line">    <span class="built_in">this</span>.todo = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 Vue 中，我们的输入字段中有一个名为 v-model 的句柄。这实现了**双向绑定。输入字段代码如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;todo&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>V-Model 将输入字段的内容绑定到名为 toDoItem 的数据对象的键（key）上。当页面加载时，我们将 toDoItem 设置为空字符串，比如：todo：’ ‘。如果已经存在数据，例如 todo：’添加文本处’，输入字段将加载添加文本处的输入内容。无论如何，将其作为空字符串，我们在输入字段中键入的任何文本都会绑定到 todo。这实际上是双向绑定（输入字段可以更新数据对象，数据对象可以更新输入字段）。</p>
+<p>因此，回顾前面的 createNewToDoItem() 代码块，我们将 todo 的内容存放到列表数组中 ，然后将 todo 改为空字符串。</p>
+<h2 id="4-删除待办事项"><a href="#4-删除待办事项" class="headerlink" title="4.删除待办事项"></a>4.删除待办事项</h2><h3 id="React-的实现方法-1"><a href="#React-的实现方法-1" class="headerlink" title="React 的实现方法"></a>React 的实现方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deleteItem = <span class="function"><span class="params">indexToDelete</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(<span class="function">(<span class="params">&#123; list &#125;</span>) =&gt;</span> (&#123;</span><br><span class="line">      list: list.filter(<span class="function">(<span class="params">toDo, index</span>) =&gt;</span> index !== indexToDelete)</span><br><span class="line">    &#125;));</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>尽管 deleteItem 函数位于 ToDo.js 文件中，但是从 ToDoItem.js 文件中引用它也很容易，将 deleteItem() 函数作为 上的 prop 传递：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ToDoItem deleteItem=&#123;<span class="built_in">this</span>.deleteItem.bind(<span class="built_in">this</span>, key)&#125;/&gt;</span><br></pre></td></tr></table></figure>
+<p>这会将该函数传递给子组件，使其可以访问。我们绑定了 this 并传递 key 参数，当用户点击删除项时，函数通过 key 区分用户点击的是哪一条 ToDoItem 。然后，在ToDoItem 组件内部，我们执行以下操作：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">”ToDoItem-Delete”</span> <span class="attr">onClick</span>=<span class="string">&#123;this.props.deleteItem&#125;</span>&gt;</span>-<span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+<p>想要引用位于父组件内部的函数，只需引用 this.props.deleteItem 即可。</p>
+<h3 id="Vue-的实现方法-1"><a href="#Vue-的实现方法-1" class="headerlink" title="Vue 的实现方法"></a>Vue 的实现方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">onDeleteItem</span>(<span class="params">todo</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.list = <span class="built_in">this</span>.list.filter(<span class="function"><span class="params">item</span> =&gt;</span> item !== todo);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Vue 的实现方法稍有不同，我们需要做到以下三点：</p>
+<ol>
+<li>首先，在元素上调用函数：</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">”ToDoItem-Delete”</span> @<span class="attr">click</span>=<span class="string">”deleteItem(todo)”</span>&gt;</span>-<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>然后我们必须创建一个 emit 函数，将其作为子组件的内部方法（在本例中为ToDoItem.vue），如下所示：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">deleteItem</span>(<span class="params">todo</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.$emit(<span class="string">&#x27;delete&#x27;</span>, todo)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>之后，你会发现，当我们添加 ToDo.vue的 ToDoItem.vue 时，实际上引用了一个函数：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;ToDoItem v-<span class="keyword">for</span>=<span class="string">&quot;todo in list&quot;</span> </span><br><span class="line">	:todo=<span class="string">&quot;todo&quot;</span> </span><br><span class="line">	@<span class="keyword">delete</span>=<span class="string">&quot;onDeleteItem&quot;</span> <span class="comment">// &lt;-- this :)</span></span><br><span class="line">	:key=<span class="string">&quot;todo.id&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p>这就是所谓的自定义事件监听器。它会监听任何使用 ‘delete’ 字符串的触发事件。一旦监听到事件，它会触发一个名为 onDeleteItem 的函数。此函数位于 ToDo.vue 内部，而不是 ToDoItem.vue。如前所述，该函数只是过滤数据对象内的 todo 数组 ，以删除被点击的待办事项。</p>
+<p>在 Vue 示例中还需要注意的是，我们可以在 @click 侦听器中编写 $emit 部分，这样更加简单，如下所示：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">”ToDoItem-Delete”</span> @<span class="attr">click</span>=<span class="string">”$emit(‘delete’,</span> <span class="attr">todo</span>)”&gt;</span>-<span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+<p>如果你喜欢，这样做可以把 3 步减少到 2 步。</p>
+<p>React 中的子组件可以通过 this.props 访问父函数，而在 Vue 中，你需要从子组件中发出事件，父组件来收集事件。</p>
+<h2 id="5-如何传递事件监听器"><a href="#5-如何传递事件监听器" class="headerlink" title="5.如何传递事件监听器"></a>5.如何传递事件监听器</h2><h3 id="React-的实现方法-2"><a href="#React-的实现方法-2" class="headerlink" title="React 的实现方法"></a>React 的实现方法</h3><p>事件监听器处理简单事件（比如点击）非常直接。我们为待办事项创建了点击事件，用于创建新的待办事项，代码如下： </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">”ToDo-Add”</span> <span class="attr">onClick</span>=<span class="string">&#123;this.createNewToDoItem&#125;</span>&gt;</span>+<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>非常简单，就像使用 vanilla JS 处理内联 onClick 一样。正如前文所述，只要按下回车按钮，设置事件监听器就需要花费更长的时间。这需要输入标签处理 onKeyPress 事件，代码如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">”text”</span> <span class="attr">onKeyPress</span>=<span class="string">&#123;this.handleKeyPress&#125;/</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>该函数只要识别到’enter’键被按下，它就会触发 <strong>createNewToDoItem</strong> 函数，代码如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">handleKeyPress = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (e.key === ‘Enter’) &#123;</span><br><span class="line">		<span class="built_in">this</span>.createNewToDoItem();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="Vue-的实现方法-2"><a href="#Vue-的实现方法-2" class="headerlink" title="Vue 的实现方法"></a>Vue 的实现方法</h3><p>Vue 的事件监听器更加直接。我们只需要使用一个简单的 @ 符号，就可以构建出我们想要的事件监听器。例如，想要添加 click 事件监听器，代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">”ToDo-Add”</span> @<span class="attr">click</span>=<span class="string">”createNewToDoItem()”</span>&gt;</span>+<span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：@click 实际上是 v-on:click 的简写。Vue 事件监听器很强大，你可以为其选择属性，例如 .once 可以防止事件监听器被多次触发。此外，它还包含很多快捷方式。按下回车按钮时，React 就需要花费更长的时间来创建事件监听器，从而创建新的 ToDo 项目。在 Vue，代码如下：</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">”text”</span> <span class="attr">v-on:keyup.enter</span>=<span class="string">”createNewToDoItem”/</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="6-如何将数据传递给子组件"><a href="#6-如何将数据传递给子组件" class="headerlink" title="6.如何将数据传递给子组件"></a>6.如何将数据传递给子组件</h2><h3 id="React-的实现方法-3"><a href="#React-的实现方法-3" class="headerlink" title="React 的实现方法"></a>React 的实现方法</h3><p>在 React 中，我们将 props 传递到子组件的创建处。比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ToDoItem key=&#123;key&#125; item=&#123;todo&#125; /&gt;</span><br></pre></td></tr></table></figure>
+<p>此处我们向 ToDoItem 组件传递了两个 prop。之后，我们可以在子组件中通过 this.props 引用它们。因此，想要访问 item.todo prop，我们只需调用this.props.item 。</p>
+<h3 id="Vue-的实现方法-3"><a href="#Vue-的实现方法-3" class="headerlink" title="Vue 的实现方法"></a>Vue 的实现方法</h3><p>在 Vue 中，我们将 props 传递到子组件创建处的方式如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;ToDoItem v-<span class="keyword">for</span>=<span class="string">&quot;todo in list&quot;</span> </span><br><span class="line">	:todo=<span class="string">&quot;todo&quot;</span></span><br><span class="line">	:key=<span class="string">&quot;todo.id&quot;</span></span><br><span class="line">	@<span class="keyword">delete</span>=<span class="string">&quot;onDeleteItem&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p>我们将它们传递给子组件中的 props 数组，如：props：[‘id’，’todo’]。然后可以在子组件中通过名字引用它们。</p>
+<h2 id="7-如何将数据发送回父组件"><a href="#7-如何将数据发送回父组件" class="headerlink" title="7.如何将数据发送回父组件"></a>7.如何将数据发送回父组件</h2><h3 id="React-的实现方法-4"><a href="#React-的实现方法-4" class="headerlink" title="React 的实现方法"></a>React 的实现方法</h3><p>我们首先将函数传递给子组件，方法是在我们调用子组件时将其引用为 prop。然后我们通过引用 this.props.whateverTheFunctionIsCalled，为子组件添加调用函数，例如 onClick。然后，这将触发父组件中的函数。删除待办事项一节中详细介绍了整个过程。</p>
+<h3 id="Vue-的实现方法-4"><a href="#Vue-的实现方法-4" class="headerlink" title="Vue 的实现方法"></a>Vue 的实现方法</h3><p>在子组件中我们只需编写一个函数，将一个值发送回父函数。在父组件中编写一个函数来监听子组件何时发出该值的事件，监听到事件之后触发函数调用。同样，删除待办事项一节中详细介绍了整个过程。</p>
+<h2 id="8-总结"><a href="#8-总结" class="headerlink" title="8.总结"></a>8.总结</h2><p>我们研究了添加、删除和更改数据，以 prop 形式从父组件到子组件传递数据，以及通过事件监听器的形式将数据从子组件发送到父组件。当然，React 和 Vue 之间存在一些小差异，希望本文的内容有助于理解这两个框架。</p>
+<p>两个应用程序的 GitHub 地址：</p>
+<p><strong>Vue ToDo：</strong><a target="_blank" rel="noopener" href="https://github.com/sunil-sandhu/vue-todo">https://github.com/sunil-sandhu/vue-todo</a></p>
+<p><strong>React ToDo：</strong><a target="_blank" rel="noopener" href="https://github.com/sunil-sandhu/react-todo">https://github.com/sunil-sandhu/react-todo</a></p>
+
+      </section>
+
+    </article>
+    
+    
+
+
+    <!-- 版权声明 -->
+    <div class="post-copyright">
+	<div>
+		<strong>本文作者：</strong>
+		<span>
+			树寒
+		</span>
+	</div>
+	<div>
+		<strong>本文链接：</strong>
+		<a href="https://simple99.cn/20210106-vue-react-difference">
+			https://simple99.cn/20210106-vue-react-difference
+			<!-- https://simple99.cn/2021/01/06/20210106-vue-react-difference/ -->
+		</a>
+	</div>
+	<div>
+		<span>欢迎任何形式的转载，但请务必注明出处。</span>
+	</div>
+	<div>
+		<span>由于笔者水平有限，如果文章或代码有表述不当之处，还请不吝赐教。</span>
+	</div>
+</div>
+
+
+<style>
+	.post-copyright {
+		background-color: #fff;
+		/* box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.05); */
+		box-shadow: 0 6px 30px -10px rgba(0, 0, 0, 0.1);
+		display: block;
+		margin: 20px auto;
+		margin-bottom: 15px;
+		padding: 10px;
+		font-size: 15px;
+		color: #2e2d2d;
+		word-break: break-all;
+		line-height: 1.8;
+	}
+
+
+	.post-copyright a {
+		color: #2e2d2d;
+		border-bottom: 1px solid #999;
+	}
+
+	.post-copyright a:hover {
+		color: #2e2d2d;
+		border-bottom: 1px solid #000;
+	}
+</style>
+
+    <!-- comments -->
+    <div class="comments">
+    <h3 id="commenttitle" style="margin-top: 20px;margin-left: 10px;">评论区</h3>
+    <div id="tcomment"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/twikoo@1.0.0/dist/twikoo.all.min.js"></script>
+<script>twikoo.init({ envId: '', el: '#tcomment' })</script>
+
+
+    <div class="right-icon">
+      <div id="to-valine" class="right-icon-item">
+        <a href="#commenttitle">评论</a>
+      </div>
+    </div>
+
+  </div>
+
+
+  <aside>
+    <div class="aside-wrap">
+    
+        <section class="widget-wrap">
+    <h3 class="widget-title">简介</h3>
+    <div class="widget">
+        <div class="notice">
+            <img class="notice-img" src="https://shuxhan-imgbed.oss-cn-hangzhou.aliyuncs.com/img/20210108164434.jpg">
+            <p>路漫漫其修远兮，<br>吾将上下而求索!<br></p>
+            
+            <p class="notice-item">
+                <!-- github -->
+                <span><a target="_blank" href="https://github.com/shuxhan"><img src="https://shuxhan-imgbed.oss-cn-hangzhou.aliyuncs.com/img/20210108165043.jpg" alt="Github"></a></span>
+                <!-- juejin -->
+                <span><a target="_blank" href="https://juejin.cn/user/3210229685698430/posts"><img src="https://shuxhan-imgbed.oss-cn-hangzhou.aliyuncs.com/img/20210108165800.png" alt="掘金社区"></a></span>
+                <!-- zhihu -->
+                <span><a target="_blank" href="https://www.zhihu.com"><img src="https://shuxhan-imgbed.oss-cn-hangzhou.aliyuncs.com/img/20210108172745.ico" alt="知乎"></a></span>
+                <!-- csdn -->
+                <span><a target="_blank" href="https://blog.csdn.net/ZSH_jerry"><img src="https://shuxhan-imgbed.oss-cn-hangzhou.aliyuncs.com/img/20210108172932.ico" alt="CSDN"></a></span>
+            </p>
+
+            <ul class="statistics">
+                <li>
+                    <span>文章</span>
+                    <a href="/archives">7</a>
+                </li>
+                <li>
+                    <span>字数</span>
+                    <a>8.1k</a>
+                </li>
+                <li>
+                    <span>访客</span>
+                    <a id="busuanzi_value_site_uv"></a>
+                </li>
+                
+                
+            </ul>
+
+            <div id="follow" class="button">
+                <a target="_blank" href="https://github.com/shuxhan">关注</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+        
+  <section class="widget-wrap">
+    <h3 class="widget-title">文章分类</h3>
+    <div class="widget">
+      <div class="categories-list">
+        
+           
+            
+              <a class="category-list-item" href="/categories/其他">
+                <span class="category-list-link">其他</span>
+                <span class="category-list-number">(2)</span>
+              </a>
+            
+           
+            
+              <a class="category-list-item" href="/categories/随笔文章">
+                <span class="category-list-link">随笔文章</span>
+                <span class="category-list-number">(2)</span>
+              </a>
+            
+           
+            
+              <a class="category-list-item" href="/categories/前端技术">
+                <span class="category-list-link">前端技术</span>
+                <span class="category-list-number">(2)</span>
+              </a>
+            
+          
+        
+      </div>
+    </div>
+  </section>
+
+
+    
+        
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-%E6%9D%82%E8%B0%88/" rel="tag">react 杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BB%BA%E7%AB%99%E6%89%8B%E5%86%8C%E5%8F%8A%E9%97%AE%E9%A2%98/" rel="tag">建站手册及问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%84%E4%BB%B6%E5%BA%93/" rel="tag">组件库</a></li></ul>
+    </div>
+  </div>
+
+
+    
+        
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul class="recent-posts">
+        
+          <li>
+            <a href="/2021/01/14/20210114-hexo-typecho/">－－－ 使用 simple99 前必看！！！－－－</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/07/20210107-react-markdown-braft-editor/">基于 React 的富文本编辑器－－Braft Editor</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/06/20210106-vue-react-difference/">使用 React 与 Vue 创建同一款 App，差别究竟有多大？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/13/20201013-custom/">github pages怎么自定义域名？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/18/20200918-weber/">对全栈的一些思考</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        
+  <section class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li></ul>
+    </div>
+  </section>
+
+
+    
+        
+  <section class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div>
+      <ul class="widget-links">
+          
+          <li>
+              <a target="_blank" rel="noopener" href="https://www.shuxhan.com" title="">
+                  树寒的博客
+              </a>
+          </li>
+          
+      </ul>
+    </div>
+  </section>
+
+
+<style>
+  .widget-links {
+    list-style: none;
+    padding-left: 10px;
+  }
+  .widget-links >li > a:hover {
+    color: #f40;
+    text-decoration: underline;
+  }
+</style>
+    
+        <section class="widget-wrap">
+    <div class="widget">
+        <div class="notice attention">
+            <p>本博客主题采用的是基于 hexo 打造的 <a href="https://github.com/shuxhan/hexo-theme-simple99" target="_blank">simple99</a>，主题已上架 hexo 官网。</p>
+            <p>如有其他问题，请在博客<a target="_blank" rel="noopener" href="https://shuxhan.com/message">留言</a>，或者发一封邮件给我，我的邮箱地址：zsh981109@163.com</p>
+            
+        </div>
+    </div>
+</section>
+
+    
+    
+</div>
+
+
+    <!-- 目录 -->
+    
+      <div id="toc"></div>
+      <script>
+        $(function () {
+          var elm = $('#toc');
+          var startPos = $(elm).offset().top;
+        $.event.add(window, "scroll", function () {
+          var p = $(window).scrollTop();
+          $(elm).css('margin-left', '0px');
+          $(elm).css('position', ((p) > startPos) ? 'fixed' : 'static');
+          $(elm).css('top', ((p) > startPos) ? '20px' : '')
+        })
+      })
+      </script>
+    
+  </aside>
+  
+</div>
+
+					</div>
+				</div>
+
+				<!-- 返回顶部按钮 -->
+				<div class="right-icon">
+					<div id="to-top" class="right-icon-item">
+						<a>
+							<span class="top-left"></span>
+							<span class="top-right"></span>
+						</a>
+					</div>
+				</div>
+		</div>
+		<footer class="footer">
+
+    <div class="copyright-wrap">
+      <span>&copy; 2020-2021 树寒</span>
+      <span id="timeDate">载入天数...</span><span id="busuanzi_container_site_pv">
+      总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+    </div>
+    
+    
+    <!-- <span id="busuanzi_container_site_uv">
+      ，本站访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span> -->
+    
+</footer>
+
+<script>
+    var now = new Date();
+    function createtime() {
+      var grt = new Date("06/14/2020 12:00:00");//此处修改你的建站时间或者网站上线时间 
+      now.setTime(now.getTime() + 250);
+      days = (now - grt) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+      document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+    }
+    setInterval("createtime()", 1000);
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/lib/jquery.js"></script>
+
+
+<script src="/lib/waves.js"></script>
+
+
+<script src="/lib/jquery-ui.js"></script>
+
+
+<script src="/lib/jquery.tocify.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+			
+<style>
+  .copy-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 20px;
+    color: rgb(206, 206, 206);
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 3px;
+    user-select: none;
+    outline: 0;
+  }
+
+  .copy-btn:hover {
+    color: #888
+  }
+
+  .highlight-wrap .copy-btn {
+    padding: 2px 6px;
+    position: absolute;
+    right: 10px;
+    top: 1px;
+    z-index: 1;
+  }
+
+
+
+  .highlight-wrap {
+    position: relative;
+  }
+
+  #copysuccess {
+    width: 200px;
+    height: 75px;
+    position: fixed;
+    right: 50%;
+    margin-right: -100px;
+    top: 40%;
+    margin-top: -40px;
+    color: #fff;
+    font-weight: 600;
+    background: #444444d8;
+    display: none;
+    z-index: 99999;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 30px;
+    padding-top: 10px;
+    user-select: none;
+  }
+</style>
+
+<script>
+  addLoadEvent(() => {
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<div>').addClass('copy-btn').append('复制代码').on('click', function (e) {
+        var copysuccess = document.getElementById('copysuccess');
+        copysuccess.style.display = 'block'
+        setTimeout(function () {
+          copysuccess.style.display = 'none'
+        }, 2000)
+        var code = $(this).parent().find(".code")[0].innerText
+          
+                var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+          
+                  if (result) $(this).text('复制成功')
+            else $(this).text('复制失败')
+              
+                $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制代码')
+        }, 1000)
+      }).append(e)
+    })
+  })
+</script>
+
+				<div id="copysuccess">复制成功<br>欢迎阅读文章~</div>
+	</body>
+
+</html>
+
+<script>
+	$('#to-top').click(function () { $('html,body').animate({ scrollTop: '0px' }, 500); return false; });
+</script>
